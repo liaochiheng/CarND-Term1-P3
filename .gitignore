@@ -1,0 +1,5 @@
+# train data
+data/
+*.jpg
+
+windows_sim/

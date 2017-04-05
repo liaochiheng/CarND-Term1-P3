@@ -15,7 +15,6 @@ def extract_csv(csvfile, path):
         reader = csv.reader(f)
         for line in reader:
             lines.append(line)
-            # TODO: more csvs
     samples = []
     for i in range(1, len(lines)):
         a = float(lines[i][3])
@@ -60,8 +59,6 @@ def generator(samples, batch_size=32):
             images, angles = [], []
             for sample in batch_samples:
                 img = cv2.imread(sample[0])
-                #print('===gen', sample[0])
-                #print('===gee', img.shape)
                 a = sample[1]
                 if sample[2] == 1:
                     img = cv2.flip(img, 1) 
@@ -98,7 +95,7 @@ def NvidiaNet():
 
     return model, 'nvidia.h5'
 
-# Alex Net
+# Simple Net （Not used!）
 def AlexNet():
     model = Sequential()
     model.add(Lambda(lambda x: x / 255.0 - 0.5, input_shape=(160, 320, 3)))
